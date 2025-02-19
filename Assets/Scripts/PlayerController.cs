@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
+            GameObject.Find("Pickup Sound").GetComponent<AudioSource>().Play();
         }
     }
 
@@ -49,8 +51,10 @@ public class PlayerController : MonoBehaviour
         countText.text = "Count: " + count.ToString();
         if (count >= 12)
         {
+            GameObject.Find("BackGround Music").GetComponent<AudioSource>().mute = true;
             winTextObject.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+            GameObject.Find("Win Sound").GetComponent<AudioSource>().Play();
         }
     }
 
@@ -61,6 +65,10 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+        }
+        else if (collision.gameObject.CompareTag("Wall"))
+        {
+            GameObject.Find("Wall Hit Sound").GetComponent<AudioSource>().Play();
         }
     }
 }
