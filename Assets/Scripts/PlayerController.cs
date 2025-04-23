@@ -63,7 +63,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(explosionVFX, transform.position, Quaternion.identity);
+            var fx = Instantiate(explosionVFX, transform.position, Quaternion.identity);
+            Destroy(fx, 2f);
             Destroy(gameObject);
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
