@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
     public Transform player;
     private NavMeshAgent navMeshAgent;
     public AudioSource audioSource;
+    private Animator anim;
 
     private bool hasPlayedAudio = false;
     
@@ -13,6 +14,26 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        if (EnemySpeedManager.SpeedLevel == EnemySpeed.Slow)
+        {
+            navMeshAgent.speed = 2f;
+        }
+        else if (EnemySpeedManager.SpeedLevel == EnemySpeed.Medium)
+        {
+            navMeshAgent.speed = 3.5f;
+        }
+        else if (EnemySpeedManager.SpeedLevel == EnemySpeed.Fast)
+        {
+            navMeshAgent.speed = 5f;
+        }
+
+        anim = GetComponentInChildren<Animator>();
+
+        if (anim)
+        {
+            anim.SetFloat("speed_f", navMeshAgent.speed);
+        }
     }
 
     // Update is called once per frame

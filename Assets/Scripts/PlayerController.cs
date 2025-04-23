@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+            collision.gameObject.GetComponentInChildren<Animator>().SetFloat("speed_f", 0);
         }
         else if (collision.gameObject.CompareTag("Wall"))
         {

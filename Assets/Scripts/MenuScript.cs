@@ -7,22 +7,26 @@ public class MenuScript : MonoBehaviour
 {
     public void GoToGame()
     {
-        StartCoroutine(WaitForSoundAndTransition("Minigame"));
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Minigame");
+        // StartCoroutine(WaitForSoundAndTransition("Minigame"));
     }
 
     public void GoToMenu()
     {
-        StartCoroutine(WaitForSoundAndTransition("MainMenu"));
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        // StartCoroutine(WaitForSoundAndTransition("MainMenu"));
     }
 
     public void GoToSettings()
     {
-        StartCoroutine(WaitForSoundAndTransition("SettingsMenu"));
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SettingsMenu");
+        // StartCoroutine(WaitForSoundAndTransition("SettingsMenu"));
     }
 
     public void GoToTutorial()
     {
-        StartCoroutine(WaitForSoundAndTransition("InstructionsMenu"));
+        UnityEngine.SceneManagement.SceneManager.LoadScene("InstructionsMenu");
+        // StartCoroutine(WaitForSoundAndTransition("InstructionsMenu"));
     }
 
     public void ExitGame()
