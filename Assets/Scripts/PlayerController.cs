@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     public AudioSource audioSource;
     public GameObject explosionVFX;
+    public Button endGameButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent <Rigidbody>();
         count = 0;
         SetCountText();
+        endGameButton.gameObject.SetActive(false);
         winTextObject.SetActive(false);
     }
 
@@ -86,6 +89,7 @@ public class PlayerController : MonoBehaviour
         {
             GameObject.Find("BackGround Music").GetComponent<AudioSource>().mute = true;
             winTextObject.SetActive(true);
+            endGameButton.gameObject.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
             GameObject.Find("Win Sound").GetComponent<AudioSource>().Play();
         }
@@ -100,6 +104,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+            endGameButton.gameObject.SetActive(true);
             collision.gameObject.GetComponentInChildren<Animator>().SetFloat("speed_f", 0);
         }
         else if (collision.gameObject.CompareTag("Wall"))
