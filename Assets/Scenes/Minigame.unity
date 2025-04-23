@@ -1633,7 +1633,7 @@ GameObject:
   - component: {fileID: 645020322}
   - component: {fileID: 645020321}
   - component: {fileID: 645020326}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2769,6 +2769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1692f24821614b82a5e6c2f12d4f53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMoving: 0
   speed: 10
   countText: {fileID: 2111614188}
   winTextObject: {fileID: 1720351483}
@@ -4240,7 +4241,7 @@ GameObject:
   - component: {fileID: 1837366055}
   - component: {fileID: 1837366054}
   - component: {fileID: 1837366053}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4682,7 +4683,7 @@ GameObject:
   - component: {fileID: 1957561926}
   - component: {fileID: 1957561925}
   - component: {fileID: 1957561924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ramp (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5100,7 +5101,7 @@ GameObject:
   - component: {fileID: 2020203438}
   - component: {fileID: 2020203437}
   - component: {fileID: 2020203436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ramp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5711,7 +5712,7 @@ GameObject:
   - component: {fileID: 2122149976}
   - component: {fileID: 2122149975}
   - component: {fileID: 2122149974}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ramp (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

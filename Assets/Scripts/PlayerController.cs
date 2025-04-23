@@ -4,6 +4,8 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    private Vector3 targetPos;
+    [SerializeField] private bool isMoving = false;
     private Rigidbody rb;
     private int count;
     private float movementX;
@@ -23,10 +25,40 @@ public class PlayerController : MonoBehaviour
         winTextObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
+            Debug.DrawRay(ray.origin, ray.direction * 50, Color.yellow);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)) 
+            {
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    targetPos = hit.point;
+                    isMoving = true;
+                }
+            }
+            else if (Vector3.Distance(rb.position, targetPos) < 0.5f)
+            {
+                isMoving = false;
+            }
+        }
+    }
+
     private void FixedUpdate() 
     {
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
+
+        if (isMoving)
+        {
+            Vector3 direction = targetPos - rb.position;
+            direction.Normalize();
+            rb.AddForce(direction * speed);
+        }
     }
 
     void OnTriggerEnter(Collider other) 
